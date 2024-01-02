@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="profile.css">
+  <title>User Profile</title>
+</head>
+
+<body>
+  <div id="profile-container">
+    <h1>Profile</h1>
+    <div id="profile-data">
+
+      <div id="personal-info" class="category">
+        <h2>Personal Information</h2>
+        <p><strong>Gender:</strong> {{gender}}</p>
+        <p><strong>Name:</strong> {{firstName}} <span id="middleName" class="hidden">{{middleName}}</span> {{lastName}}
+        </p>
+        <p><strong>Birthday:</strong> {{year}}-{{month}}-{{day}}</p>
+        <p><strong>Personal Code:</strong> {{personalCode}}</p>
+      </div>
+
+      <div id="marital-status" class="category">
+        <h2>Marital Status</h2>
+        <p><strong>Relationship Status:</strong> {{maritalStatus}}</p>
+        <div id="married" class="hidden">
+          <p><strong>Spouse First Name:</strong> {{spouseFirstName}}</p>
+          <p><strong>Spouse Last Name:</strong> {{spouseLastName}}</p>
+        </div>
+      </div>
+
+      <div id="contact-info" class="category">
+        <h2>Contact Information</h2>
+        <p><strong>Phone Number:</strong> {{phoneNumber}}</p>
+        <p><strong>Email Address:</strong> {{email}}</p>
+        <p><strong>Address:</strong> {{addressLine1}} {{addressLine2}}</p>
+        <p><strong>ZIP/Postal Code:</strong> {{zipCode}}</p>
+        <p><strong>City:</strong> {{city}}</p>
+        <p><strong>Country:</strong> {{country}}</p>
+      </div>
+
+      <div id="education-details" class="category">
+        <h2>Education Details</h2>
+        <p><strong>Education Level:</strong> {{educationLevel}}</p>
+        <p><strong>Last Completed Education Institution:</strong> {{lastInstitution}}</p>
+        <p><strong>Graduation Year:</strong> {{graduationYear}}</p>
+
+        <div id="studyingVocational" class="hidden">
+          <p><strong>Qualification (Specialty Name):</strong> {{vocationalQualification}}</p>
+        </div>
+
+        <div id="studyingCollege" class="hidden">
+          <p><strong>Qualification (Specialty Name):</strong> {{collegeQualification}}</p>
+          <p><strong>Degree:</strong> {{collegeDegree}}</p>
+        </div>
+
+        <div id="studyingUniversity" class="hidden">
+          <p><strong>Qualification (Specialty Name):</strong> {{universityQualification}}</p>
+          <p><strong>Degree:</strong> {{universityDegree}}</p>
+        </div>
+      </div>
+
+      <div id="occupational-status" class="category">
+        <h2>Occupational Status</h2>
+        <p><strong>Occupation:</strong> {{occupationalStatus}}</p>
+
+        <div id="studying" class="hidden">
+          <p><strong>Degree Level:</strong> {{degreeLevel}}</p>
+          <p><strong>Study Course:</strong> {{studyCourse}}</p>
+          <p><strong>Institution:</strong> {{institution}}</p>
+          <p><strong>Expected Graduation Year:</strong> {{expectedGraduationYear}}</p>
+        </div>
+
+        <div id="working" class="hidden">
+          <p><strong>Organisation:</strong> {{organisation}}</p>
+          <p><strong>Duties:</strong> {{duties}}</p>
+        </div>
+
+        <div id="not-working" class="hidden">
+          <p><strong>Reason Of Unemployment:</strong> {{rou}}</p>
+        </div>
+
+        <div id="maternity-leave" class="hidden">
+          <p><strong>End Of Vacation:</strong> {{endYear}}-{{endMonth}}-{{endDay}}</p>
+        </div>
+      </div>
+
+      <div id="work-details" class="category">
+        <h2>Work Details</h2>
+        <p><strong>Work Experience (years):</strong> {{workExperience}}</p>
+        <p><strong>Field of Work:</strong> {{fieldOfWork}}</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="profile.js"></script>
+</body>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="survey.css">
+  <title>Survey</title>
+</head>
+
+<body>
+  <div id="survey-container">
+    <h1>Survey</h1>
+    <form id="survey-form">
+
+      <!-- Personal Info -->
+      <fieldset>
+        <h2>Personal Info</h2>
+        <!-- Gender -->
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <br>
+
+        <!-- Name -->
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+        <label for="middleName">Middle Name:</label>
+        <input type="text" id="middleName" name="middleName"><br>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+
+        <!-- Date of Birth -->
+        <label>Date of Birth:</label>
+        <label for="year">Year:</label>
+        <input type="number" id="year" placeholder="YYYY" pattern="[0-9]{4}" required>
+        <label for="month">Month:</label>
+        <select id="month" required>
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+        <label for="day">Day:</label>
+        <input type="number" id="day" placeholder="DD" pattern="^(0[1-9]|[1-9]|[1-2][0-9]|3[0-1])$" required>
+
+        <!-- Personal Code -->
+        <label for="personalCode">Personal Code:</label>
+        <input type="number" id="personalCode" name="personalCode" required><br>
+      </fieldset>
+
+      <!-- Marital status -->
+      <fieldset>
+        <h2>Marital Status</h2>
+        <label for="maritalStatus">Marital Status:</label>
+        <select id="maritalStatus" name="maritalStatus" onclick="toggleSpouseDetails()" required>
+          <option value="single">Single</option>
+          <option value="married" disabled>Married</option>
+          <option value="divorced" disabled>Divorced</option>
+        </select><br>
+
+        <!-- Spouse details (conditionally visible based on marital status) -->
+        <div id="spouseDetails" style="display: none;">
+          <label for="spouseFirstName">Spouse First Name:</label>
+          <input type="text" id="spouseFirstName" name="spouseFirstName"><br>
+          <label for="spouseLastName">Spouse Last Name:</label>
+          <input type="text" id="spouseLastName" name="spouseLastName"><br>
+        </div>
+      </fieldset>
+
+      <!-- Contact Info -->
+      <fieldset>
+        <h2>Contact Info</h2>
+        <!-- Phone number -->
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required><br>
+
+        <!-- Email address -->
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required autocomplete="email"><br>
+
+        <!-- Residence -->
+        <label for="addressLine1">Address Line 1:</label>
+        <input type="text" id="addressLine1" name="addressLine1" required><br>
+        <label for="addressLine2">Address Line 2:</label>
+        <input type="text" id="addressLine2" name="addressLine2"><br>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br>
+        <label for="zipCode">ZIP/Postal Code:</label>
+        <input type="text" id="zipCode" name="zipCode" required><br>
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" required autocomplete="country"><br>
+      </fieldset>
+
+      <!-- Education Details -->
+      <fieldset>
+        <h2>Education Details</h2>
+        <!-- Education Level -->
+        <label for="educationLevel">Education Level:</label>
+        <select id="educationLevel" name="educationLevel" onchange="toggleDegreeDetails()" required>
+          <option value="" disabled selected>Select</option>
+          <option value="primary">Primary</option>
+          <option value="secondary">Secondary</option>
+          <option value="vocational">Vocational</option>
+          <option value="higher-college">Higher College</option>
+          <option value="higher-university">Higher University</option>
+        </select><br>
+
+        <!-- Last Completed Education Institution and Graduation Year -->
+        <label for="lastInstitution">Last Completed Education Institution:</label>
+        <input type="text" id="lastInstitution" name="lastInstitution" required><br>
+
+        <label for="graduationYear">Graduation Year:</label>
+        <input type="text" id="graduationYear" name="graduationYear" required><br>
+
+        <div id="collegeDegreeDetails" style="display: none;">
+          <!-- Qualification (Specialty Name) -->
+          <label for="collegeQualification">Qualification (Specialty Name):</label>
+          <input type="text" id="collegeQualification" name="qualification" required><br>
+
+          <!-- Degree for College -->
+          <label for="collegeDegree">Degree:</label>
+          <select id="collegeDegree" name="collegeDegree" required>
+            <option value="" disabled selected>Select</option>
+            <option value="professional-bachelor">Professional Bachelor's Degree</option>
+          </select><br>
+        </div>
+
+        <div id="universityDegreeDetails" style="display: none;">
+          <!-- Qualification (Specialty Name) -->
+          <label for="universityQualification">Qualification (Specialty Name):</label>
+          <input type="text" id="universityQualification" name="qualification" required><br>
+
+          <!-- Degree for University -->
+          <label for="universityDegree">Degree:</label>
+          <select id="universityDegree" name="universityDegree" required>
+            <option value="" disabled selected>Select</option>
+            <option value="bachelor">Bachelor's Degree</option>
+            <option value="master">Master's Degree</option>
+            <option value="doctoral">Doctoral Degree</option>
+          </select><br>
+        </div>
+
+        <div id="vocationalDegreeDetails" style="display: none;">
+          <!-- Qualification (Specialty Name) for Vocational Education -->
+          <label for="vocationalQualification">Qualification (Specialty Name):</label>
+          <input type="text" id="vocationalQualification" name="vocationalQualification" required><br>
+        </div>
+
+      </fieldset>
+
+      <!-- Occupational Status -->
+      <fieldset>
+        <h2>Occupational Status</h2>
+        <!-- Occupational Status -->
+        <label for="occupationalStatus">Occupation:</label>
+        <select id="occupationalStatus" name="occupationalStatus" onchange="toggleAdditionalFields()">
+          <option value="" disabled selected>Select</option>
+          <option value="studying">Studying</option>
+          <option value="working">Working</option>
+          <option value="not-working">Not Working</option>
+          <option value="maternity-leave">Maternity/Paternity Leave</option>
+        </select><br>
+
+        <!-- Studying Details -->
+        <div id="studyDetails" style="display: none;">
+          <label>Degree Level:</label>
+          <select id="degreeLevel" name="degreeLevel">
+            <option value="" disabled selected>Select</option>
+            <option value="bachelor">Bachelor's degree</option>
+            <option value="master">Master's degree</option>
+            <option value="doctoral">Doctoral degree</option>
+          </select>
+          <label for="studyCourse">Course:</label>
+          <input type="number" id="studyCourse" name="studyCourse"><br>
+          <label for="institution">Institution:</label>
+          <input type="text" id="institution" name="institution"><br>
+          <label>Expected Year Of Graduation:</label>
+          <input type="text" id="expectedGraduationYear" placeholder="YYYY" pattern="[0-9]{4}">
+        </div>
+
+        <!-- Working Details -->
+        <div id="workDetails" style="display: none;">
+          <label for="organisation">Organisation:</label>
+          <input type="text" id="organisation" name="organisation"><br>
+          <label for="duties">Duties:</label>
+          <input type="text" id="duties" name="duties"><br>
+        </div>
+
+        <!-- Not Working Details -->
+        <div id="unemploymentDetails" style="display: none;">
+          <label for="rou">Reason Of Unemployment</label>
+          <textarea id="rou" name="rou" rows="4" cols="50"></textarea><br>
+        </div>
+
+        <!-- Maternity/Paternity Leave Details -->
+        <div id="leaveDetails" style="display: none;">
+          <label>End Of Vacation (Year):</label>
+          <input type="number" id="endYear" placeholder="YYYY" pattern="[0-9]{4}">
+          <label for="endMonth">Month:</label>
+          <select id="endMonth">
+            <option value="" disabled selected>Select</option>
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+          <label for="endDay">Day:</label>
+          <input type="number" id="endDay" placeholder="DD" pattern="^(0[1-9]|[1-9]|[1-2][0-9]|3[0-1])">
+        </div>
+      </fieldset>
+
+      <!-- Work Details -->
+      <fieldset>
+        <h2>Work Details</h2>
+        <label for="workExperience">Work Experience (years):</label>
+        <input type="number" id="workExperience" name="workExperience" min="0"><br>
+
+        <label for="fieldOfWork">Field of Work:</label>
+        <select id="fieldOfWork" name="fieldOfWork">
+          <option value="" disabled selected>Select</option>
+          <option value="none">None</option>
+          <option value="law">Law</option>
+          <option value="public-sector">Public Sector</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="pharmacy">Pharmacy</option>
+          <option value="industry-manufacturing">Industry/Manufacturing</option>
+          <option value="it">IT</option>
+          <option value="trade">Trade</option>
+          <option value="national-defense">National Defense</option>
+          <option value="internal-affairs-system">Internal Affairs System</option>
+          <option value="customer-service">Customer Service</option>
+          <option value="transportation">Transportation</option>
+          <option value="culture-entertainment">Culture and Entertainment</option>
+          <option value="education-studies">Education/Studies</option>
+        </select><br>
+      </fieldset>
+
+      <button type="button" onclick="submitSurvey()">Submit and Go to Profile</button>
+
+    </form>
+  </div>
+
+  <div id="customAlert" class="custom-alert">
+    <div class="alert-content">
+      <strong>Error:</strong> Please fill in all the required fields.
+    </div>
+    <button id="alertBtn" onclick="closeCustomAlert()">OK</button>
+  </div>
+
+  <script src="survey.js"></script>
+</body>
+
+</html>
